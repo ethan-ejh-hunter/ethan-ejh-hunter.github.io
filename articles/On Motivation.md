@@ -1,6 +1,9 @@
 ---
 title: On Motivation
+date: 2026-03-22
 ---
+
+## On Motivation
 
 I just barely finished one of my first long personal projects (~100 hours or so of personal time). I'm currently taking a CPU design class, making a simplified RISC-V processor on a Xilinx FPGA. And by simplified, for instance, we don't have instructions to read or write anything smaller than a word (so no reading/writing to a particular byte or halfword), and obviously no hardware multiply or divide. I decided to write a Zork Z-Machine interpreterer for it, entirely in RISC-V assembly. And I wanted to write out some of my thoughts that made this a project that I actually finished. 
 
