@@ -4,7 +4,6 @@ date: 2026-03-22
 ---
 
 ## On Motivation
-
 I just barely finished one of my first long personal projects (~100 hours or so of personal time). I'm currently taking a CPU design class, making a simplified RISC-V processor on a Xilinx FPGA. And by simplified, for instance, we don't have instructions to read or write anything smaller than a word (so no reading/writing to a particular byte or halfword), and obviously no hardware multiply or divide. I decided to write a Zork Z-Machine interpreterer for it, entirely in RISC-V assembly. And I wanted to write out some of my thoughts that made this a project that I actually finished. 
 
 The principle I tried to work by is this: motivation is *the* currency in personal projects, spend it well. Some pieces of your project are investments, and some are fixed costs. Ruthlessly protect your investments. 
@@ -19,7 +18,7 @@ Z-Machine code, if you haven't heard about it before, is a bytecode. It's a CISC
 
 To me, this was worth it. I sat back at the end and was like, "wow, that's a clever piece of code." I mean, it was a pain and definitely not worth the performance gain. But I felt clever, it was technically faster, and I had a win under my belt, that earned back some motivation.
 
-But it's not always worth it. Let me tell you about another part of the Z-Machine code. It has a single opcode that is basically this: get a line from the user, and parse everything. Like, that's one opcode?? Well, Z-machine code is really a DSL for making parse adventures, so I guess it makes sense. Anyway, so you need to, once you've collected input, parse it by going through the dictionary, looking up the word, and returning the index to that word. Z-Machine's dictionary is technically binary-searchable since it's in alphabetical order, but the entries are 9 bytes each, and on this CPU reading individual bytes required helper routines rather than simple word reads. I just didn't want to debug that. So I wrote a naive linear search that starts at the top and checks every entry, and it worked first try. 
+But it's not always worth it. The Z-Machine has a single opcode that handles collecting a line of user input and parsing the entire thing — dictionary lookup included. That's a lot to handle in one opcode, but this is not only a CISC bytecode, but you could probably consider it a DSL as well. Once you've collected input, you parse it by going through the dictionary, looking up each word, and returning its index. The dictionary is technically binary-searchable since it's in alphabetical order, but entries are 9 bytes each, and on this CPU reading individual bytes required helper routines rather than simple word reads. I just didn't want to debug that. So I wrote a naive linear search that starts at the top and checks every entry, and it worked first try.
 
 In other words, that old adage about "beware of premature optimization" is true, but this is *your* project. If you really enjoy writing clever little bit twiddling routines, or throwing together good data-structures and efficient O(n) algorithms to parse them, do it. But, sometimes, if you find you don't enjoy a part very much, it only has to be "good enough."
 
